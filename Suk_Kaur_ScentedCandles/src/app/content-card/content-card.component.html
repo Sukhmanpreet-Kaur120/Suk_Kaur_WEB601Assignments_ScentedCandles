@@ -1,0 +1,9 @@
+<p>content-card works!</p>
+<div *ngFor="let it of contentList.tems">
+    <h2>title: {{it.title}}</h2>
+    <p>Description: {{it.description}}</p>
+    <p>Creator: {{it.creator}}</p>
+    <p>Type: {{it.type || 'N/A'}}</p>
+
+<img src="{{it.imgUrl}}" />
+</div>
