@@ -8,28 +8,14 @@
 
 <div>
   <h2>Content with No Type</h2>
-  <div *ngFor="let content of contents | contentTypeFilter: ''">
+  <div *ngFor="let content of contentList | contentTypeFilter: ''">
     <app-content-card [content]="content"></app-content-card>
   </div>
 </div>
 
 <div>
-  <h2>Philosophical Content</h2>
-  <div *ngFor="let content of contents | contentTypeFilter: 'Philosophical'; let i = index" [ngClass]="{'first-card': i === 0}">
-    <app-content-card [content]="content"></app-content-card>
-  </div>
-</div>
-
-<div>
-  <h2>Romance Content</h2>
-  <div *ngFor="let content of contents | contentTypeFilter: 'Romance'; let i = index" [ngClass]="{'first-card': i === 0}">
-    <app-content-card [content]="content"></app-content-card>
-  </div>
-</div>
-
-<div>
-  <h2>Classic Content</h2>
-  <div *ngFor="let content of contents | contentTypeFilter: 'Classic'; let i = index" [ngClass]="{'first-card': i === 0}">
+  <h2>Scented Candle</h2>
+  <div *ngFor="let content of contentList | contentTypeFilter: 'Scented Candle'; let i = index" [ngClass]="{'first-card': i === 0}">
     <app-content-card [content]="content"></app-content-card>
   </div>
 </div>

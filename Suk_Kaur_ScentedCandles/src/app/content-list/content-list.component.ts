@@ -1,21 +1,22 @@
+// content-list.component.ts
 import { Component, OnInit } from '@angular/core';
 import { Content } from '../helper-files/content-interface';
+import { style } from '@angular/animations';
 
 @Component({
   selector: 'app-content-list',
   templateUrl: './content-list.component.html',
-  styleUrl: './content-list.component.scss'
+  styleUrls: ['./content-list.component.scss']
 })
-  export class ContentListComponent implements OnInit{
+export class ContentListComponent implements OnInit{
     ngOnInit() {
+      this.contentList.forEach(content => content.isSelected = false);
     }
     contentList :Content[]= [
     {
        id: 1,
        title: 'Calm Lavender',
        description: 'A very calm fragrance of Lavender.',
-       imgUrl: 'https://th.bing.com/th/id/OIP.jBLz1MSNf6emYleC5jYO-wHaF7?w=234&h=187&c=7&r=0&o=5&dpr=1.3&pid=1.7',
-        type: 'Scented Candle',
        creator: 'JewelScents'
    },
 
@@ -24,7 +25,6 @@ import { Content } from '../helper-files/content-interface';
     title: 'Dried Lavender and Oak',
     description: 'Dried lavender bundles mingle with spices and the woodsy scent of an outdoor farmers market.',
     imgUrl: 'https://www.pcfallon.com/images/product/medium/34932.jpg',
-    type: 'Scented Candle',
     creator: 'Yankee Candle'
   },
 
@@ -33,7 +33,6 @@ import { Content } from '../helper-files/content-interface';
     title: 'Sweet Vanila Cinnamon',
     description: 'There is nothing quite like the aroma of fresh baked goods, especially when there cinnamon and vanilla involved.',
     imgUrl: 'https://www.mydomaine.com/thmb/RqVsJzPLjftntPrf2-w6YDkhXjg=/fit-in/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/Illume-Boulangerie-Sweet-Vanilla-Cinnamon-Jar-Candle-973e05b4cb7a49da8f52041b145c4a1c.jpg',
-    type: 'Scented Candle',
     creator: 'Boulangerie'
   },
 
@@ -42,7 +41,6 @@ import { Content } from '../helper-files/content-interface';
     title: 'Champagne Toast',
     description: 'Bubbly chanmpage with bright berries different ones and juicy tangerine.',
     imgUrl: 'https://m.media-amazon.com/images/I/61jjQD1f+eL._AC_SX342_SY445_.jpg',
-    type: 'Scented Candle',
     creator: 'White Barn'
   },
 
@@ -69,8 +67,27 @@ import { Content } from '../helper-files/content-interface';
     description: 'Whether you are winding down after a hectic day or setting the mood for a peaceful evening, the WoodWick Lavender Spa candle adds a touch of luxury to your space.',
     imgUrl: 'https://i.etsystatic.com/35181453/r/il/c7c8c0/5596650762/il_794xN.5596650762_6ubp.jpg',
     type: 'Scented Candle',
-    creator:'WoodWick'
+    creator:'WoodWick',
+    tags:["1,2"]
   }
   ];
+   searchTitle: string = ''; 
+  searchResultMessage: string = ''; 
+  searchResultColor: string = ''; 
+  searchContent() {
+    let contentExists = this.contentList.some(content => content.title.toLowerCase() === this.searchTitle.toLowerCase());
+
+    if (contentExists) {
+      this.searchResultMessage = 'Content item exists!';
+      this.searchResultColor = 'green';
+      let selectedContent = this.contentList.find(content => content.title === this.searchTitle);
+      if (selectedContent) {
+        selectedContent.isSelected = true;
+      }
+    } else {
+      this.searchResultMessage = 'Content item does not exist!';
+      this.searchResultColor = 'red';
+    }
+  }
 
 }
