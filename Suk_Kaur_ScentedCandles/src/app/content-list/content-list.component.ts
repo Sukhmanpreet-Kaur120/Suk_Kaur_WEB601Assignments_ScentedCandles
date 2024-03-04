@@ -1,7 +1,5 @@
-// content-list.component.ts
 import { Component, OnInit } from '@angular/core';
 import { Content } from '../helper-files/content-interface';
-import { style } from '@angular/animations';
 
 @Component({
   selector: 'app-content-list',
