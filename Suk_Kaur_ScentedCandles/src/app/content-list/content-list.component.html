@@ -5,6 +5,12 @@
     {{ searchResultMessage }}
   </div>
 </div>
+<app-create-content (createContent)="onContentCreated($event)"></app-create-content>
+<div>
+  <div *ngFor="let content of contentList">
+    <app-content-card [content]="content"></app-content-card>
+  </div>
+</div>
 
 <div>
   <h2>Content with No Type</h2>

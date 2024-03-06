@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Content } from '../helper-files/content-interface';
+import { style } from '@angular/animations';
+
 
 @Component({
   selector: 'app-content-list',
@@ -85,7 +87,11 @@ export class ContentListComponent implements OnInit{
     } else {
       this.searchResultMessage = 'Content item does not exist!';
       this.searchResultColor = 'red';
-    }
-  }
 
 }
+  }
+  onContentCreated(newContent: any) {
+    this.contentList.push({ ...newContent }); 
+  }
+}
+
