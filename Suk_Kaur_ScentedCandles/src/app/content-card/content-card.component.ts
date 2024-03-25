@@ -7,7 +7,7 @@ import { Content } from '../helper-files/content-interface';
 })
 export class ContentCardComponent {
 
-  @Input() content!: Content;
+  @Input() content:any;
 
   constructor() {}
   displayContentInfo() {

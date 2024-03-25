@@ -1,12 +1,16 @@
-<div>
+<!-- <div>
   <input [(ngModel)]="searchTitle" placeholder="Enter Content Title" />
   <button (click)="searchContent()">Search</button>
   <div [style.color]="searchResultColor">
     {{ searchResultMessage }}
   </div>
+</div> -->
+
+<div *ngFor="let content of contentList">
+<app-content-card [content]="content" ></app-content-card>
 </div>
 
-<div>
+<!-- <div>
   <h2>Content with No Type</h2>
   <div *ngFor="let content of contentList | contentTypeFilter: ''">
     <app-content-card [content]="content"></app-content-card>
@@ -18,4 +22,4 @@
   <div *ngFor="let content of contentList | contentTypeFilter: 'Scented Candle'; let i = index" [ngClass]="{'first-card': i === 0}">
     <app-content-card [content]="content"></app-content-card>
   </div>
-</div>
+</div> -->

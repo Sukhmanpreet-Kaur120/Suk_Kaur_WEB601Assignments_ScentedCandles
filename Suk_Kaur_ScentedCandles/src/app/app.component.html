@@ -1,1 +1,9 @@
+<input type="number" [(ngModel)]="selectedId">
+<button (click)="getContentItem()">Get Content Item</button>
+    
+<app-appmessages></app-appmessages> 
+<app-content-card [content]="singleContentItem" *ngIf="singleContentItem"></app-content-card>
+    
 <app-content-list></app-content-list>
+
+  
